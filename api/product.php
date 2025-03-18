@@ -1,5 +1,7 @@
 <?php
 include 'config.php';
+header("Content-Type: application/json");
+
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -25,7 +27,7 @@ if ($method === "PUT") {
     $description = $data['description'];
     $price = $data['price'];
 
-    $sql = "UPDATE products SET name = '$name', description = '$description', price = $price, WHERE id ='$id';";
+    $sql = "UPDATE products SET name = '$name', description = '$description', price = $price WHERE id = '$id'";
     echo json_encode(value: ["success" => $conn->query($sql)]);
 }
 
